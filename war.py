@@ -1,3 +1,6 @@
+from random import shuffle
+
+
 # This class represents a card in the game, with a card object having a suit and a value instance variables
 class Card:
     # Arranged by strength of suit, the strongest suit is last
@@ -42,3 +45,20 @@ class Card:
         v = self.values[self.value] + " of " \
          + self.suits[self.suit]
         return v
+
+
+# This class represents a standard deck of cards
+class Deck:
+    # Create a deck of 52 cards in the standard suits and append to a cards list, then shuffle
+    def __init__(self):
+        self.cards = []
+        for v in range(2, 15):
+            for s in range(4):
+                self.cards.append(Card(v, s))
+        shuffle(self.cards)
+
+    # If there is still at least one card in the deck, remove a card
+    def rm_card(self):
+        if len(self.cards) == 0:
+            return
+        return self.cards.pop()
