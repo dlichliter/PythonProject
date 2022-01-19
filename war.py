@@ -1,3 +1,4 @@
+# This program allows two players to compete in the classic card game of war
 from random import shuffle
 
 
