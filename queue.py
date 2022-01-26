@@ -12,18 +12,18 @@ def simulate_line(till_show, max_time):
 
     for i in range(50):
         pq.enqueue("Person" + str(i))
-        t_end = time.time() + till_show
+    now = time.time()
+    t_end = now + till_show
+    # While t_end has not been reached and there are still people in the queue
+    while now < t_end and not pq.is_empty():
         now = time.time()
-        # While t_end has not been reached and there are still people in the queue
-        while now < t_end and not pq.is_empty():
-            now = time.time()
-            r = random.randint(0, max_time)
-            # simulate how long it takes to buy a ticket
-            time.sleep(r)
-            # After the person buys a ticket, remove them from pq and place them in the tickets sold list
-            person = pq.dequeue()
-            print(person)
-            tx_sold.append(person)
+        r = random.randint(0, max_time)
+        # simulate how long it takes to buy a ticket
+        time.sleep(r)
+        # After the person buys a ticket, remove them from pq and place them in the tickets sold list
+        person = pq.dequeue()
+        print(person)
+        tx_sold.append(person)
 
     return tx_sold
 
