@@ -48,6 +48,5 @@ class Queue:
         return len(self.items)
 
 
-queue = Queue()
 sold = simulate_line(5, 1)
 print(sold)
